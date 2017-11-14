@@ -12,6 +12,8 @@ import { Router, hashHistory } from 'react-router';
 import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 const sagaMiddleware = createSagaMiddleware();
+import { NotificationContainer } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 
 const store = createStore(reducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
@@ -26,6 +28,7 @@ ReactDOM.render(
   <Provider store={store}>
     <div style={{ height: '100%' }}>
       <Router history={history} routes={routes}/>
+      <NotificationContainer/>
     </div>
   </Provider>,
   document.getElementById('root')

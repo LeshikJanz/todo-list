@@ -10,14 +10,20 @@
   background-color: #090321;
   box-shadow: -3.5px 2px 38px 0 rgba(0, 0, 0, 0.28);
 
-  > img {
-    cursor: pointer;
-    height: 80%;
-    margin-bottom: 0;
-    opacity: 0.95;
+  a {
+    display: flex;
+    height: 100%;
+    align-items: center;
 
-    &:hover {
-      opacity: 1;
+    img {
+      cursor: pointer;
+      height: 80%;
+      margin-bottom: 0;
+      opacity: 0.95;
+
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 

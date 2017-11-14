@@ -61,11 +61,15 @@ module.exports = {
         loader: ExtractTextPlugin.extract('css-loader!sass-loader')
       },
       {
+        test: /\.(png|jpg|gif)$/,
+        loader: 'url-loader'
+      },
+      {
         test: /\.(jpg|png|gif)$/,
         use: 'file-loader'
       },
       {
-        test: /\.(ico|eot|otf|webp|pdf|ttf|woff(2)?)(\?.*)?$/,
+        test: /\.(ico|eot|otf|webp|svg|pdf|ttf|woff(2)?)(\?.*)?$/,
         use: 'file-loader'
       }]
   },

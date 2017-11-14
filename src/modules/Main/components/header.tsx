@@ -1,9 +1,13 @@
 import * as React from 'react';
 import '../styles/style.scss';
+import { Link } from 'react-router';
+import { urls } from "urls";
 
 export const Header = () => (
   <div className="headerContainer">
-    <img src="assets/icons/create-new-icon.png"/>
-    <div className="headerText">Todo list by Alex Tereshko</div>
+    <Link to={urls.todo}>
+      <img src="assets/icons/create-new.png"/>
+    </Link>
+    <div className="headerText">Todo list implemented by Alex Tereshko</div>
   </div>
 );

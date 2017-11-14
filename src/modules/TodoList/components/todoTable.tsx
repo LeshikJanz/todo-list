@@ -1,13 +1,12 @@
 import * as React from 'react';
 import '../styles/table.scss';
-const todoList = require('assets/mock-data/todoList.json');
 
 const filterByPublicFields = (elem) => ({
   title: elem.title,
   description: elem.description
 });
 
-export const TodoTable = () => (
+export const TodoTable = ({ todoList }) => (
   <div className="tableContainer">
     <table>
       <tbody>

@@ -1,13 +1,17 @@
 import * as React from 'react';
-import { TodoTable } from "./todoTable";
-require('../styles/style.scss');
 
-export const Todo = () => {
-
-  return (
-    <div>
-      <h1 className="welcome">Welcome to the TODO App</h1>
-      <TodoTable/>
-    </div>
-  )
-};
+export const Todo = ({ handleTodo }) => (
+  <div>
+    <form onSubmit={handleTodo}>
+      <div>
+        <label htmlFor="title">Title</label>
+        <input name="title" required placeholder="Title" type="text"/>
+      </div>
+      <div>
+        <label htmlFor="description">Description</label>
+        <textarea name="description" required placeholder="Title" type="text"/>
+      </div>
+      <button>Submit</button>
+    </form>
+  </div>
+);
