@@ -1,5 +1,6 @@
 import * as React from 'react';
 import '../styles/table.scss';
+import { Link } from 'react-router';
 
 const filterByPublicFields = (elem, i) => ({
   id: i + 1,
@@ -7,7 +8,7 @@ const filterByPublicFields = (elem, i) => ({
   description: elem.description
 });
 
-export const TodoTable = ({ todoList, loading, checkedItems, handleCheckbox }) => (
+export const TodoTable = ({ todoList, loading, checkedItems, handleCheckbox, gotoTodo }) => (
   <div className="tableContainer">
     { (todoList.length !== 0 && !loading) &&
     <table>
@@ -24,7 +25,7 @@ export const TodoTable = ({ todoList, loading, checkedItems, handleCheckbox }) =
             <th><input type="checkbox" onChange={(e) => handleCheckbox(e, l)}/></th>
             {
               Object.values(filterByPublicFields(l, i))
-                .map((o, i) => <th key={i}>{o}</th>)
+                .map((o, i) => <th onClick={() => gotoTodo(l.id)} key={i}>{o}</th>)
             }
           </tr>
         )

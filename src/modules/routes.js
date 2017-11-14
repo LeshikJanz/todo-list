@@ -10,7 +10,7 @@ export default (
   <Route component={Base}>
     <Route path={urls.index} component={TodoList}/>
     <Route path={urls.todo} component={Todo}/>
-    <Route path={urls.todo + '/:id/'} component={Todo}/>
+    <Route path={urls.todo + '/:id'} component={Todo}/>
     <Route path='*' component={PageNotFound}/>
   </Route>
 );
