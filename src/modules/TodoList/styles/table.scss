@@ -3,10 +3,9 @@
   box-shadow: inset -0px -3px 3px 0 rgba(0, 0, 0, 0.04);
   color: #7d858e;
   padding: 69px 15% 94px;
-  width: 100%;
 
   table {
-    width: 70%;
+    width: 100%;
 
     tr {
       background: #f5f8f9;
@@ -50,5 +49,16 @@
         color: white;
       }
     }
+  }
+
+  .emptyTable {
+    text-align: center;
+  }
+
+  .actionButtons {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 30px;
   }
 }

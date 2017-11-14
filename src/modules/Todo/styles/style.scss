@@ -1,0 +1,23 @@
+.todoContainer {
+  margin: 100px 15%;
+
+  .formElement {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+
+    label {
+      margin-bottom: 10px;
+    }
+
+    input {
+      height: 30px;
+      max-width: 400px;
+    }
+
+    textarea {
+      font-size: 16px;
+      width: 60%;
+    }
+  }
+}
