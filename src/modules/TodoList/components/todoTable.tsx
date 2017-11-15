@@ -8,8 +8,16 @@ const filterByPublicFields = (elem, i) => ({
   description: elem.description
 });
 
-export const TodoTable = ({ todoList, loading, checkedItems, handleCheckbox, gotoTodo }) => (
-  <div className="tableContainer">
+export const TodoTable = ({
+                            todoList,
+                            loading,
+                            checkedItems,
+                            handleCheckbox,
+                            gotoTodo,
+                            isFinishedList,
+                            markAsFinished
+                          }) => (
+  <div>
     { (todoList.length !== 0 && !loading) &&
     <table>
       <tbody>
@@ -20,7 +28,7 @@ export const TodoTable = ({ todoList, loading, checkedItems, handleCheckbox, got
         <th>Description</th>
       </tr>
       {
-        todoList.map((l, i) =>
+        todoList.map((l, i) => isFinishedList === l.isFinished &&
           <tr key={i}>
             <th><input type="checkbox" onChange={(e) => handleCheckbox(e, l)}/></th>
             {
@@ -43,7 +51,7 @@ export const TodoTable = ({ todoList, loading, checkedItems, handleCheckbox, got
     {
       checkedItems.length > 0 &&
       <div className="actionButtons">
-        <button>Set as finished</button>
+        <button onClick={markAsFinished}>Set as finished</button>
         <button>Delete</button>
       </div>
     }

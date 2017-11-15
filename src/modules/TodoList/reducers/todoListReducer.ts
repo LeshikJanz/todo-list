@@ -1,16 +1,21 @@
 import { createReducer } from 'utils/createReducer';
-import { fetchTodosDone, fetchTodosInit } from "../../actions";
+import { changeListType, fetchTodosDone, fetchTodosInit } from "../../actions";
 import { ITodo } from "interfaces";
 
 const initialState = {
   list: [],
+  type: 'active',
   loading: false
 };
 
 export default createReducer({
-  [fetchTodosInit().type]: (state: any, payload: ITodo[]) => initialState,
   [fetchTodosDone().type]: (state: any, payload: ITodo[]) => ({
+    ...state,
     loading: false,
     list: payload
   }),
+  [changeListType().type]: (state: any, payload: string) => ({
+    ...state,
+    type: payload
+  })
 }, initialState);

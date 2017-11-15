@@ -1,8 +1,8 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { Route } from 'react-router';
 import { urls } from "urls";
 import { PageNotFound } from './Main/components/pageNotFount';
-import { Base } from './Main/components/index';
+import Base from './Main/containers/index';
 import { TodoList } from './TodoList/components/index';
 import Todo from './Todo/containers/index';
 

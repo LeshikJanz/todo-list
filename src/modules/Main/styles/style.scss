@@ -33,3 +33,18 @@
     color: #ffffff;
   }
 }
+
+.navMenu {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+  > a {
+    cursor: pointer;
+    margin: 30px;
+
+    &.active {
+      color: #cf4868;
+    }
+  }
+}

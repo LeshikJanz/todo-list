@@ -7,7 +7,8 @@ import { urls } from "../../../urls";
 
 const mapStateToProps: any = (state): any => ({
   todoList: state.Todos.list.sort((a, b) => b.order - a.order),
-  loading: state.Todos.loading
+  loading: state.Todos.loading,
+  isFinishedList: state.Todos.type === 'finished'
 });
 
 export default compose(
@@ -15,7 +16,7 @@ export default compose(
   withState('checkedItems', 'handleCheckedArray', []),
   withHandlers({
     handleCheckbox: ({ checkedItems, handleCheckedArray }) => ({ target }, item) => {
-      if (target.checked) {
+      if ( target.checked ) {
         checkedItems.push(item);
         handleCheckedArray(checkedItems);
       } else {
@@ -29,6 +30,7 @@ export default compose(
   lifecycle({
     componentDidMount() {
       this.props.getTodos();
+      this.props.handleCheckedArray([]);
     }
   })
 )(TodoTable);

@@ -8,6 +8,10 @@ export const updateTodosInit = createAction('UPDATE_TODOS_INIT');
 export const updateTodosDone = createAction('UPDATE_TODOS_DONE');
 export const updateTodosError = createAction('UPDATE_TODOS_ERROR');
 
+export const changeListType = createAction('CHANGE_LIST_TYPE');
+
+export const markTodosAsFinished = createAction('MARK_TODOS_AS_FINISHED');
+
 export const createTodoInit = createAction('CREATE_TODO_INIT');
 export const createTodoDone = createAction('CREATE_TODO_DONE');
 export const createTodoError = createAction('CREATE_TODO_ERROR');
