@@ -36,7 +36,7 @@ export const TodoTable = ({ todoList, loading, checkedItems, handleCheckbox, got
     { loading && <h1>Loading...</h1> }
     { (!loading && todoList.length === 0) &&
     <h1 className="emptyTable">
-      there is no one Todo. Tap to the New Button in the top left corner for starting your experience.
+      There is no one Todo. Tap to the New Button in the top left corner for starting your experience.
     </h1>
     }
 

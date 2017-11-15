@@ -3,7 +3,6 @@ import { Task } from "redux-saga";
 import { fetchTodosDone, fetchTodosInit, fetchTodosError } from "../actions";
 import { fetchTodos } from "api/todo";
 import { push } from "react-router-redux";
-import { NotificationManager } from 'react-notifications';
 
 export function* fetchTodosInitSaga({ payload }): Iterator<Object | Task> {
   try {
@@ -11,7 +10,6 @@ export function* fetchTodosInitSaga({ payload }): Iterator<Object | Task> {
     yield put(fetchTodosDone(Todos));
   } catch (error) {
     yield put(fetchTodosError(error));
-    NotificationManager.error(error && error.error.message, 'Error!');
   }
 }
 

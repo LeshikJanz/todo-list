@@ -4,18 +4,20 @@ import { createTodoDone, createTodoError, createTodoInit, fetchTodoByIdDone, fet
 import { fetchTodoById, updateTodo } from "api/todo";
 import { urls } from "../../urls";
 import { push } from "react-router-redux";
-import { NotificationManager } from 'react-notifications';
+import { initialize } from "redux-form";
 
-export function* createTodoSaga({ payload }): Iterator<Object | Task> {
+const getTodoForm = (state: any) => state.form.todoForm.values;
+
+export function* createTodoSaga(): Iterator<Object | Task> {
   try {
-    const Todo = yield updateTodo(payload);
-    yield put(createTodoDone(payload));
+    const todoForm = yield select(getTodoForm);
+
+    const Todo = yield updateTodo(todoForm);
+    yield put(createTodoDone(Todo));
 
     yield put(push(urls.index));
-    NotificationManager.success('Todo has been created!', 'Success!');
   } catch (error) {
     yield put(createTodoError(error));
-    NotificationManager.error(error && error.error.message, 'Error!');
   }
 }
 
@@ -23,9 +25,9 @@ export function* fetchTodoByIdSaga({ payload }): Iterator<Object | Task> {
   try {
     const Todo = yield fetchTodoById(payload);
     yield put(fetchTodoByIdDone(Todo));
+    yield put(initialize('todoForm', Todo));
   } catch (error) {
     yield put(createTodoError(error));
-    NotificationManager.error(error && error.error.message, 'Error!');
   }
 }
 
