@@ -1,9 +1,7 @@
 import { connect } from 'react-redux';
 import { Todo } from "../components/index";
-import { createTodoInit, fetchTodoByIdDone, fetchTodoByIdInit, fetchTodosInit } from "../../actions";
+import { createTodoInit, fetchTodoByIdInit } from "../../actions";
 import { compose, lifecycle, withState } from 'recompose';
-import { ITodo } from "interfaces";
-import { initialize } from "redux-form";
 
 const mapStateToProps: any = (state): any => ({
   todoList: state.Todos.list,
@@ -15,10 +13,6 @@ const mergeProps: any = (props, { dispatch }, ownProps): any => ({
   ...ownProps,
   handleSubmit: () => dispatch(createTodoInit()),
   fetchTodo: (id: string) => dispatch(fetchTodoByIdInit(id)),
-  setTodo: (todo: ITodo) => {
-    dispatch(fetchTodoByIdDone(todo));
-    dispatch(initialize('todoForm', todo));
-  }
 });
 
 export default compose(
@@ -26,10 +20,8 @@ export default compose(
   lifecycle({
     componentDidMount() {
       const todoId = this.props.params && +this.props.params.id;
-      if ( !this.props.todoList.length ) {
-        todoId && this.props.fetchTodo(todoId);
-      } else {
-        todoId && this.props.setTodo(this.props.todoList.find(t => t.id === todoId));
+      if (todoId) {
+        this.props.fetchTodo(todoId);
       }
     }
   })

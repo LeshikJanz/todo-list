@@ -15,3 +15,8 @@ export const updateTodo = (todo: ITodo) =>
   request
     .put('todos', todo)
     .then((res: ITodo) => <ITodo> res);
+
+export const deleteTodo = (id: string) =>
+  request
+    .delete(`todos/${id}`, {})
+    .then((res: number) => <number> res);

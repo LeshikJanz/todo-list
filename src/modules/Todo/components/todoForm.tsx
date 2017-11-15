@@ -12,7 +12,7 @@ let TodoForm: any = ({ handleSubmit }) => (
       <label htmlFor="description">Description</label>
       <Field name="description" required component="textarea" rows="10" type="text"/>
     </div>
-    <button>Submit</button>
+    <button>Save</button>
   </form>
 );
 

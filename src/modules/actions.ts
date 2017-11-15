@@ -4,10 +4,6 @@ export const fetchTodosInit = createAction('FETCH_TODOS_INIT');
 export const fetchTodosDone = createAction('FETCH_TODOS_DONE');
 export const fetchTodosError = createAction('FETCH_TODOS_ERROR');
 
-export const updateTodosInit = createAction('UPDATE_TODOS_INIT');
-export const updateTodosDone = createAction('UPDATE_TODOS_DONE');
-export const updateTodosError = createAction('UPDATE_TODOS_ERROR');
-
 export const changeListType = createAction('CHANGE_LIST_TYPE');
 
 export const markTodosAsFinished = createAction('MARK_TODOS_AS_FINISHED');
@@ -15,6 +11,10 @@ export const markTodosAsFinished = createAction('MARK_TODOS_AS_FINISHED');
 export const createTodoInit = createAction('CREATE_TODO_INIT');
 export const createTodoDone = createAction('CREATE_TODO_DONE');
 export const createTodoError = createAction('CREATE_TODO_ERROR');
+
+export const updateTodoInit = createAction('UPDATE_TODO_INIT');
+export const updateTodoDone = createAction('UPDATE_TODO_DONE');
+export const updateTodoError = createAction('UPDATE_TODO_ERROR');
 
 export const fetchTodoByIdInit = createAction('FETCH_TODO_BY_ID_INIT');
 export const fetchTodoByIdDone = createAction('FETCH_TODO_BY_ID_DONE');

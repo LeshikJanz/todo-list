@@ -64,9 +64,7 @@ table {
     display: flex;
     height: 100%;
     width: 100%;
-    margin: auto;
     text-align: right;
-    justify-content: space-around;
     margin-top: 13px;
 
     button {
@@ -75,6 +73,10 @@ table {
       height: 60%;
       color: black;
       margin: 2px 0;
+
+      &:last-child {
+        margin-left: 20px;
+      }
     }
   }
 }

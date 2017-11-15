@@ -15,7 +15,9 @@ export const TodoTable = ({
                             handleCheckbox,
                             gotoTodo,
                             isFinishedList,
-                            markAsFinished
+                            markAsFinished,
+                            handleFinish,
+                            handleDelete
                           }) => (
   <div>
     { (todoList.length !== 0 && !loading) &&
@@ -28,17 +30,21 @@ export const TodoTable = ({
         <th></th>
       </tr>
       {
-        todoList.map((l, i) => isFinishedList === l.isFinished &&
-          <tr key={i}>
-            {
-              Object.values(filterByPublicFields(l, i))
-                .map((o, i) => <th onClick={() => gotoTodo(l.id)} key={i}>{o}</th>)
-            }
-            <th className="tableActions">
-              <button>Mark as finished</button>
-            </th>
-          </tr>
-        )
+        todoList
+          .filter(t => t.isFinished === isFinishedList)
+          .map((l, i) =>
+            <tr key={i}>
+              {
+                Object.values(filterByPublicFields(l, i))
+                  .map((o, i) => <th onClick={() => gotoTodo(l.id)} key={i}>{o}</th>)
+              }
+              <th className="tableActions">
+                {!isFinishedList && <button onClick={() => handleFinish(l)}>Finish</button>}
+                {isFinishedList && <button onClick={() => handleFinish(l)}>Active</button>}
+                <button onClick={() => handleDelete(l.id)}>Delete</button>
+              </th>
+            </tr>
+          )
       }
       </tbody>
     </table>
