@@ -15,15 +15,6 @@ export default compose(
   connect(mapStateToProps),
   withState('checkedItems', 'handleCheckedArray', []),
   withHandlers({
-    handleCheckbox: ({ checkedItems, handleCheckedArray }) => ({ target }, item) => {
-      if ( target.checked ) {
-        checkedItems.push(item);
-        handleCheckedArray(checkedItems);
-      } else {
-        const items = checkedItems.filter(c => c !== item);
-        handleCheckedArray(items);
-      }
-    },
     getTodos: ({ dispatch }) => () => dispatch(fetchTodosInit()),
     gotoTodo: ({ dispatch }) => (id) => dispatch(push(urls.todo + '/' + id)),
   }),

@@ -4,6 +4,12 @@ table {
   tr {
     background: #f5f8f9;
     cursor: pointer;
+
+    &:hover {
+      .tableActions button {
+        opacity: 1;
+      }
+    }
   }
 
   tr:first-child {
@@ -25,6 +31,16 @@ table {
     &.disabled {
       color: #7d858e;
     }
+
+    &:first-child {
+      width: 5%;
+    }
+    &:nth-child(2) {
+      width: 25%;
+    }
+    &:nth-child(3) {
+      width: 50%;
+    }
   }
 
   tr:hover {
@@ -41,6 +57,24 @@ table {
 
     * {
       color: white;
+    }
+  }
+
+  .tableActions {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    text-align: right;
+    justify-content: space-around;
+    margin-top: 13px;
+
+    button {
+      cursor: pointer;
+      opacity: 0;
+      height: 60%;
+      color: black;
+      margin: 2px 0;
     }
   }
 }

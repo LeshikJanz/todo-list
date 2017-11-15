@@ -22,19 +22,21 @@ export const TodoTable = ({
     <table>
       <tbody>
       <tr>
-        <th></th>
         <th>№</th>
         <th>Title</th>
         <th>Description</th>
+        <th></th>
       </tr>
       {
         todoList.map((l, i) => isFinishedList === l.isFinished &&
           <tr key={i}>
-            <th><input type="checkbox" onChange={(e) => handleCheckbox(e, l)}/></th>
             {
               Object.values(filterByPublicFields(l, i))
                 .map((o, i) => <th onClick={() => gotoTodo(l.id)} key={i}>{o}</th>)
             }
+            <th className="tableActions">
+              <button>Mark as finished</button>
+            </th>
           </tr>
         )
       }
@@ -46,14 +48,6 @@ export const TodoTable = ({
     <h1 className="emptyTable">
       There is no one Todo. Tap to the New Button in the top left corner for starting your experience.
     </h1>
-    }
-
-    {
-      checkedItems.length > 0 &&
-      <div className="actionButtons">
-        <button onClick={markAsFinished}>Set as finished</button>
-        <button>Delete</button>
-      </div>
     }
   </div>
 );
