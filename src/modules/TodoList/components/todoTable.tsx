@@ -38,12 +38,12 @@ export const TodoTable = ({
                           }) => {
 
   const onDragEnd = (result) => {
-    if (!result.destination) {
+    if ( !result.destination ) {
       return;
     }
 
     const items = reorder(
-      todoList,
+      todoList.filter(t => t.isFinished === isFinishedList),
       result.source.index,
       result.destination.index
     );

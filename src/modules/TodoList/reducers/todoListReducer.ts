@@ -31,10 +31,12 @@ export default createReducer({
   }),
   [updateOrderAction().type]: (state: any, payload: string[]) => ({
     ...state,
-    list: payload.map((id, i) => {
-      const elem = state.list.find(s => s.id === id);
-      elem.order = i;
-      return elem;
-    })
+    list: [
+      ...state.list.filter(l => !payload.find(id => id === l.id)),
+      ...payload.map((id, i) => {
+        const elem = state.list.find(s => s.id === id);
+        elem.order = i;
+        return elem;
+      })]
   }),
 }, initialState);
