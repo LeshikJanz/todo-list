@@ -6,7 +6,7 @@ export const fetchTodosError = createAction('FETCH_TODOS_ERROR');
 
 export const changeListType = createAction('CHANGE_LIST_TYPE');
 
-export const markTodosAsFinished = createAction('MARK_TODOS_AS_FINISHED');
+export const updateOrderAction = createAction('UPDATE_ORDER_ACTION');
 
 export const createTodoInit = createAction('CREATE_TODO_INIT');
 export const createTodoDone = createAction('CREATE_TODO_DONE');

@@ -20,3 +20,8 @@ export const deleteTodo = (id: string) =>
   request
     .delete(`todos/${id}`, {})
     .then((res: number) => <number> res);
+
+export const updateOrder = (ids: string[]) =>
+  request
+    .post(`todos/updateOrder`, { ids })
+    .then((res: boolean) => <boolean> res);

@@ -1,13 +1,16 @@
 import { connect } from 'react-redux';
 import { compose, lifecycle, withState, withHandlers, withProps } from 'recompose';
-import { deleteTodoInit, fetchTodosInit, updateTodoInit } from "modules/actions";
+import {
+  deleteTodoInit, fetchTodosInit, updateOrderAction,
+  updateTodoInit
+} from "modules/actions";
 import { TodoTable } from "../components/todoTable";
 import { push } from 'react-router-redux';
 import { urls } from "urls";
 import { ITodo } from "interfaces";
 
 const mapStateToProps: any = (state): any => ({
-  todoList: state.Todos.list.sort((a, b) => b.order - a.order),
+  todoList: state.Todos.list,
   loading: state.Todos.loading,
   isFinishedList: state.Todos.type === 'finished'
 });
@@ -22,6 +25,8 @@ export default compose(
       todo.isFinished = !todo.isFinished;
       dispatch(updateTodoInit(todo));
     },
+    updateTodosOrder: ({ dispatch }) => (todoIds) =>
+      dispatch(updateOrderAction(todoIds)),
     handleDelete: ({ dispatch }) => (todoId: string) => dispatch(deleteTodoInit(todoId))
   }),
   lifecycle({
