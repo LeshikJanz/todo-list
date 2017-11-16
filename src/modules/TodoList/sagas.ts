@@ -53,7 +53,6 @@ export function* todoListSaga() {
     takeEvery(updateTodoInit().type, updateTodoSaga),
     takeEvery(deleteTodoInit().type, deleteTodoSaga),
     takeEvery(updateOrderAction().type, updateOrderSaga),
-
   ]
 }
 

@@ -27,11 +27,8 @@ const getItemStyle = (draggableStyle, isDragging) => ({
 export const TodoTable = ({
                             todoList,
                             loading,
-                            checkedItems,
-                            handleCheckbox,
                             gotoTodo,
                             isFinishedList,
-                            markAsFinished,
                             handleFinish,
                             handleDelete,
                             updateTodosOrder
