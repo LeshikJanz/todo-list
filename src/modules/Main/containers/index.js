@@ -1,11 +1,11 @@
-import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
-import { Base } from "../components/index";
-import { changeListType } from "../../actions";
+import { connect } from 'react-redux'
+import { push } from 'react-router-redux'
+import { Base } from "../components/index"
+import { changeListType } from "../../actions"
 
 const mapStateToProps: any = (state): any => ({
   menuType: state.Todos.type
-});
+})
 
 const mapDispatchToProps = (dispatch) => ({
   handleMenu: ({ target }) => {
@@ -13,13 +13,13 @@ const mapDispatchToProps = (dispatch) => ({
   },
   backToMainPage: (pathname) => {
     if ( pathname !== '/' ) {
-      dispatch(push('/'));
+      dispatch(push('/'))
     }
   },
-});
+})
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Base);
+)(Base)
 

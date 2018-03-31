@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react"
 
 /**
  * Component will show if selected url isn't exist

@@ -1,47 +1,47 @@
 import { put, takeEvery } from 'redux-saga/effects'
-import { Task } from "redux-saga";
+import { Task } from "redux-saga"
 import {
   fetchTodosDone, fetchTodosInit, fetchTodosError, updateTodoInit, updateTodoDone,
   updateTodoError, deleteTodoInit, deleteTodoDone, deleteTodoError, updateOrderAction
-} from "../actions";
-import { deleteTodo, fetchTodos, updateTodo, updateOrder } from "api/todo";
-import { push } from "react-router-redux";
+} from "../actions"
+import { deleteTodo, fetchTodos, updateTodo, updateOrder } from "../../api/todo"
+import { push } from "react-router-redux"
 
 export function* fetchTodosSaga({ payload }): Iterator<Object | Task> {
   try {
-    const Todos = yield fetchTodos(payload);
-    yield put(fetchTodosDone(Todos));
+    const Todos = yield fetchTodos(payload)
+    yield put(fetchTodosDone(Todos))
   } catch (error) {
-    yield put(fetchTodosError(error));
+    yield put(fetchTodosError(error))
   }
 }
 
 export function* updateTodoSaga({ payload }): Iterator<Object | Task> {
   try {
-    const Todo = yield updateTodo(payload);
-    yield put(updateTodoDone(Todo));
+    const Todo = yield updateTodo(payload)
+    yield put(updateTodoDone(Todo))
   } catch (error) {
-    yield put(updateTodoError(error));
+    yield put(updateTodoError(error))
   }
 }
 
 export function* deleteTodoSaga({ payload }): Iterator<Object | Task> {
   try {
-    yield deleteTodo(payload);
-    yield put(deleteTodoDone());
-    yield put(fetchTodosInit());
+    yield deleteTodo(payload)
+    yield put(deleteTodoDone())
+    yield put(fetchTodosInit())
   } catch (error) {
-    yield put(deleteTodoError(error));
+    yield put(deleteTodoError(error))
   }
 }
 
 export function* updateOrderSaga({ payload }): Iterator<Object | Task> {
   try {
-    const isOrdered = yield updateOrder(payload);
+    const isOrdered = yield updateOrder(payload)
     if (isOrdered) {
 
     } else {
-      throw new Error('Ordering failed');
+      throw new Error('Ordering failed')
     }
   } catch (error) {
   }

@@ -1,7 +1,7 @@
-import * as React from 'react';
-import '../styles/style.scss';
-import { Link } from 'react-router';
-import { urls } from "urls";
+import React from 'react'
+import '../styles/style.scss'
+import { Link } from 'react-router'
+import { urls } from "../../../urls"
 
 export const Header = () => (
   <div className="headerContainer">
@@ -10,4 +10,4 @@ export const Header = () => (
     </Link>
     <div className="headerText">Todo list implemented by Alex Tereshko</div>
   </div>
-);
+)

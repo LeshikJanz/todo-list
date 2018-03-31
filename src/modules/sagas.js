@@ -1,5 +1,5 @@
-import { todoSaga } from "./Todo/sagas";
-import { todoListSaga } from "./TodoList/sagas";
+import { todoSaga } from "./Todo/sagas"
+import { todoListSaga } from "./TodoList/sagas"
 
 export default function* rootSaga() {
   yield [

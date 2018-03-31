@@ -4,4 +4,4 @@
 export const urls = {
   index: '/',
   todo: 'todo'
-};
+}

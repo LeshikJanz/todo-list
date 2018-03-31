@@ -1,6 +1,6 @@
-import * as React from 'react';
-import TodoTable from "../containers/todoTable";
-require('../styles/style.scss');
+import React from 'react'
+import TodoTable from "../containers/todoTable"
+require('../styles/style.scss')
 
 export const TodoList = () => (
   <div>
@@ -8,4 +8,4 @@ export const TodoList = () => (
       <TodoTable/>
     </div>
   </div>
-);
+)

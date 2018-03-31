@@ -1,28 +1,28 @@
-import * as React from 'react';
-import '../styles/table.scss';
-import { Link } from 'react-router';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import React from 'react'
+import '../styles/table.scss'
+import { Link } from 'react-router'
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
 const filterByPublicFields = (elem, i) => ({
   id: i + 1,
   title: elem.title,
   description: elem.description
-});
+})
 
 const reorder = (list, startIndex, endIndex) => {
-  const result = list;
-  const [removed] = result.splice(startIndex, 1);
-  result.splice(endIndex, 0, removed);
+  const result = list
+  const [removed] = result.splice(startIndex, 1)
+  result.splice(endIndex, 0, removed)
 
-  return result;
-};
+  return result
+}
 
 const getItemStyle = (draggableStyle, isDragging) => ({
   userSelect: 'none',
   margin: 4,
   background: isDragging ? '#cf4868' : '#edf0f2',
   ...draggableStyle,
-});
+})
 
 export const TodoTable = ({
                             todoList,
@@ -36,17 +36,17 @@ export const TodoTable = ({
 
   const onDragEnd = (result) => {
     if ( !result.destination ) {
-      return;
+      return
     }
 
     const items = reorder(
       todoList.filter(t => t.isFinished === isFinishedList),
       result.source.index,
       result.destination.index
-    );
+    )
 
-    updateTodosOrder(items.map(i => i.id));
-  };
+    updateTodosOrder(items.map(i => i.id))
+  }
 
   return (
     <div>
@@ -109,5 +109,5 @@ export const TodoTable = ({
         </h1>
       }
     </div>
-  );
-};
+  )
+}

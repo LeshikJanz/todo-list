@@ -1,19 +1,17 @@
 const config = {
   baseUrl: '/api/'
-};
-
-declare function fetch(...params);
+}
 
 export const JSONResponse = (response: any) => {
   if ( response.ok ) {
-    return response.json();
+    return response.json()
   }
 
-  const json = response.json();
+  const json = response.json()
   return json.then((err: any) => {
-    throw err;
-  });
-};
+    throw err
+  })
+}
 
 export const request: any = new Object({
   get: (apiEndpoint: string, params?: any) => {
@@ -21,7 +19,7 @@ export const request: any = new Object({
     const paramsString = Object
       .keys(params)
       .map((key) => `${key}=${encodeURIComponent(params[key])}`)
-      .join("&");
+      .join("&")
 
     return fetch(config.baseUrl + apiEndpoint + ( paramsString ? `${paramsString}` : ""),
       {
@@ -29,7 +27,7 @@ export const request: any = new Object({
           "Authorization": localStorage.getItem('Token')
         }
       })
-      .then(JSONResponse);
+      .then(JSONResponse)
   },
   post: (apiEndpoint: string, params?: any) => {
     return fetch(config.baseUrl + apiEndpoint, {
@@ -41,7 +39,7 @@ export const request: any = new Object({
         "Authorization": localStorage.getItem('Token')
       }
     })
-      .then(JSONResponse);
+      .then(JSONResponse)
   },
   put: (apiEndpoint: string, params?: any) => {
     return fetch(config.baseUrl + apiEndpoint, {
@@ -53,7 +51,7 @@ export const request: any = new Object({
         "Authorization": localStorage.getItem('Token')
       }
     })
-      .then(JSONResponse);
+      .then(JSONResponse)
   },
   patch: (apiEndpoint: string, params?: any) => {
     return fetch(config.baseUrl + apiEndpoint, {
@@ -65,7 +63,7 @@ export const request: any = new Object({
         "Authorization": localStorage.getItem('Token')
       }
     })
-      .then(JSONResponse);
+      .then(JSONResponse)
   },
   delete: (apiEndpoint: string, params?: any) => {
     return fetch(config.baseUrl + apiEndpoint, {
@@ -77,7 +75,7 @@ export const request: any = new Object({
         "Authorization": localStorage.getItem('Token')
       }
     })
-      .then(JSONResponse);
+      .then(JSONResponse)
   }
-});
+})
 

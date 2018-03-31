@@ -1,8 +1,8 @@
-import * as React from 'react';
-import '../styles/style.scss';
+import React from 'react'
+import '../styles/style.scss'
 import { Field, reduxForm } from 'redux-form'
 
-let TodoForm: any = ({ handleSubmit }) => (
+let TodoForm = ({ handleSubmit }) => (
   <form onSubmit={handleSubmit}>
     <div className="formElement">
       <label htmlFor="title">Title</label>
@@ -14,12 +14,12 @@ let TodoForm: any = ({ handleSubmit }) => (
     </div>
     <button>Save</button>
   </form>
-);
+)
 
 
 TodoForm = reduxForm({
   enableReinitialize: true,
   form: 'todoForm'
-})(TodoForm);
+})(TodoForm)
 
-export default TodoForm;
+export default TodoForm
