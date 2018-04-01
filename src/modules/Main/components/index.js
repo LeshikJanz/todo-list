@@ -11,15 +11,47 @@ const data = {
   large: generateQuoteMap(500),
 };
 
-export const Base = ({ menuType, handleMenu, backToMainPage, children, location }) => (
-  <div className="main-container">
-    <Header/>
-    <Board initial={authorQuoteMap}/>
-    <h1 className="welcome">Welcome to the Kanban board App</h1>
-    <div className="navMenu" onClick={() => backToMainPage(location.pathname)}>
-      <a onClick={handleMenu} className={cx([{ 'active': menuType === 'active' }])}>Active</a>
-      <a onClick={handleMenu} className={cx([{ 'active': menuType === 'finished' }])}>Finished</a>
+const initialData = {
+  TODO: [
+    {
+      id: 0,
+      title: "first",
+      description: "first one description",
+    },
+    {
+      id: 1,
+      title: "second",
+      description: "second one description",
+    }
+  ],
+  DOING: [
+    {
+      id: 2,
+      title: "third",
+      description: "third one description",
+    },
+    {
+      id: 3,
+      title: "fourth",
+      description: "fourth one description",
+    }
+  ],
+}
+
+export const Base = ({ menuType, handleMenu, backToMainPage, children, location }) => {
+  console.log("authorQuoteMap")
+  console.log(authorQuoteMap)
+
+  return (
+    <div className="main-container">
+      <Header/>
+      <Board initial={initialData}/>
+      <h1 className="welcome">Welcome to the Kanban board App</h1>
+      <div className="navMenu" onClick={() => backToMainPage(location.pathname)}>
+        <a onClick={handleMenu} className={cx([{ 'active': menuType === 'active' }])}>Active</a>
+        <a onClick={handleMenu} className={cx([{ 'active': menuType === 'finished' }])}>Finished</a>
+      </div>
+      {children}
     </div>
-    {children}
-  </div>
-)
+  )
+}

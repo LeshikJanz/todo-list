@@ -13,7 +13,11 @@
       "./mixins"
     ]
   },
-  "todo": {
+  "item": {
+    "dataSource": "db",
+    "public": true
+  },
+  "itemList": {
     "dataSource": "db",
     "public": true
   }

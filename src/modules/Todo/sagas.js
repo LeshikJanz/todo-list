@@ -1,7 +1,7 @@
 import { put, select, takeEvery } from 'redux-saga/effects'
 import { Task } from "redux-saga"
 import { createTodoDone, createTodoError, createTodoInit, fetchTodoByIdDone, fetchTodoByIdInit } from "../actions"
-import { fetchTodoById, updateTodo } from "../../api/todo"
+import { fetchTodoById, updateTodo } from "../../api/item"
 import { urls } from "../../urls"
 import { push } from "react-router-redux"
 import { initialize } from "redux-form"

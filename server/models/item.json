@@ -1,6 +1,6 @@
 {
-  "name": "todo",
-  "plural": "todos",
+  "name": "item",
+  "plural": "items",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -12,18 +12,16 @@
     },
     "description": {
       "type": "string"
-    },
-    "isFinished": {
-      "type": "boolean",
-      "required": true,
-      "default": false
-    },
-    "order": {
-      "type": "number"
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "itemList": {
+      "type": "belongsTo",
+      "model": "itemList",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }

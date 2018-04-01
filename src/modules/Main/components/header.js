@@ -8,6 +8,6 @@ export const Header = () => (
     <Link to={urls.todo}>
       <img src="assets/icons/create-new.png"/>
     </Link>
-    <div className="headerText">Todo list implemented by Alex Tereshko</div>
+    <div className="headerText">Kanban board implemented by Alex Tereshko</div>
   </div>
 )

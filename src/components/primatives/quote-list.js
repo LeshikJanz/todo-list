@@ -1,12 +1,12 @@
 // @flow
 /* eslint-disable react/no-multi-comp */
+import { Item } from "types/item"
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Droppable, Draggable } from 'react-beautiful-dnd'
 import QuoteItem from './quote-item'
 import { grid, colors } from '../constants'
 import Title from './title'
-import type { Quote } from '../types'
 import type {
   DroppableProvided,
   DroppableStateSnapshot,
@@ -15,29 +15,26 @@ import type {
 } from 'react-beautiful-dnd'
 
 const Wrapper = styled.div`
-  background-color: ${({ isDraggingOver }) => (isDraggingOver ? colors.blue.lighter : colors.blue.light)}
-  display: flex
-  flex-direction: column
-  opacity: ${({ isDropDisabled }) => (isDropDisabled ? 0.5 : 'inherit')}
-  padding: ${grid}px
-  padding-bottom: 0
-  transition: background-color 0.1s ease, opacity 0.1s ease
-  user-select: none
-  width: 250px
+  background-color: ${({ isDraggingOver }) => (isDraggingOver ? colors.blue.lighter : colors.blue.light)};
+  display: flex;
+  flex-direction: column;
+  opacity: ${({ isDropDisabled }) => (isDropDisabled ? 0.5 : 'inherit')};
+  padding: ${grid}px;
+  padding-bottom: 0;
+  transition: background-color 0.1s ease, opacity 0.1s ease;
+  user-select: none;
+  width: 250px;
 `
 
 const DropZone = styled.div`
-  /* stop the list collapsing when empty */
-  min-height: 250px
-  /* not relying on the items for a margin-bottom
-  as it will collapse when the list is empty */
-  margin-bottom: ${grid}px
+  min-height: 250px;
+  margin-bottom: ${grid}px;
 `
 
 const ScrollContainer = styled.div`
-  overflow-x: hidden
-  overflow-y: auto
-  max-height: 300px
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 300px;
 `
 
 const Container = styled.div``
@@ -45,7 +42,7 @@ const Container = styled.div``
 type Props = {
   listId: string,
   listType?: string,
-  quotes: Quote[],
+  items: Item[],
   title?: string,
   internalScroll?: boolean,
   isDropDisabled ?: boolean,
@@ -56,13 +53,13 @@ type Props = {
 }
 
 type QuoteListProps = {
-  quotes: Quote[],
+  items: Item[],
   autoFocusQuoteId: ?string,
 }
 
 class InnerQuoteList extends Component<QuoteListProps> {
   shouldComponentUpdate(nextProps: QuoteListProps) {
-    if (nextProps.quotes !== this.props.quotes) {
+    if (nextProps.items !== this.props.items) {
       return true
     }
 
@@ -72,16 +69,16 @@ class InnerQuoteList extends Component<QuoteListProps> {
   render() {
     return (
       <div>
-        {this.props.quotes.map((quote: Quote, index: number) => (
-          <Draggable key={quote.id} draggableId={quote.id} index={index}>
+        {this.props.items.map((item: Item, index: number) => (
+          <Draggable key={item.id} draggableId={item.id} index={index}>
             {(provided: DraggableProvided, snapshot: DraggableStateSnapshot) => (
               <div>
                 <QuoteItem
-                  quote={quote}
+                  item={item}
                   provided={provided}
                   snapshot={snapshot}
                   {...provided.dragHandleProps}
-                  autoFocus={this.props.autoFocusQuoteId === quote.id}
+                  autoFocus={this.props.autoFocusQuoteId === item.id}
                 />
                 {provided.placeholder}
               </div>
@@ -95,24 +92,27 @@ class InnerQuoteList extends Component<QuoteListProps> {
 
 type InnerListProps = {|
   dropProvided: DroppableProvided,
-  quotes: Quote[],
+  items: Items[],
   title: ?string,
   autoFocusQuoteId: ?string,
   |}
 
 class InnerList extends Component<InnerListProps> {
   render() {
-    const { quotes, dropProvided, autoFocusQuoteId } = this.props
+    const { items, dropProvided, autoFocusQuoteId } = this.props
     const title = this.props.title ? (
       <Title>{this.props.title}</Title>
     ) : null
+
+    console.log("items")
+    console.log(items)
 
     return (
       <Container>
         {title}
         <DropZone innerRef={dropProvided.innerRef}>
           <InnerQuoteList
-            quotes={quotes}
+            items={items}
             autoFocusQuoteId={autoFocusQuoteId}
           />
           {dropProvided.placeholder}
@@ -131,7 +131,7 @@ export default class QuoteList extends Component<Props> {
       listId,
       listType,
       style,
-      quotes,
+      items,
       autoFocusQuoteId,
       title,
     } = this.props
@@ -152,7 +152,7 @@ export default class QuoteList extends Component<Props> {
             {internalScroll ? (
               <ScrollContainer>
                 <InnerList
-                  quotes={quotes}
+                  items={items}
                   title={title}
                   dropProvided={dropProvided}
                   autoFocusQuoteId={autoFocusQuoteId}
@@ -160,7 +160,7 @@ export default class QuoteList extends Component<Props> {
               </ScrollContainer>
             ) : (
               <InnerList
-                quotes={quotes}
+                items={items}
                 title={title}
                 dropProvided={dropProvided}
                 autoFocusQuoteId={autoFocusQuoteId}

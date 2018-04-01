@@ -4,7 +4,7 @@ import {
   fetchTodosDone, fetchTodosInit, fetchTodosError, updateTodoInit, updateTodoDone,
   updateTodoError, deleteTodoInit, deleteTodoDone, deleteTodoError, updateOrderAction
 } from "../actions"
-import { deleteTodo, fetchTodos, updateTodo, updateOrder } from "../../api/todo"
+import { deleteTodo, fetchTodos, updateTodo, updateOrder } from "../../api/item"
 import { push } from "react-router-redux"
 
 export function* fetchTodosSaga({ payload }): Iterator<Object | Task> {

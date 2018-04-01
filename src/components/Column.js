@@ -1,4 +1,6 @@
 // @flow
+import type { Quote } from '../types'
+import { Item } from "types/item"
 import type { DraggableProvided, DraggableStateSnapshot } from 'react-beautiful-dnd'
 import React, { Component } from 'react'
 import styled from 'styled-components'
@@ -6,7 +8,6 @@ import { grid, colors, borderRadius } from './constants'
 import { Draggable } from 'react-beautiful-dnd'
 import QuoteList from './primatives/quote-list'
 import Title from './primatives/title'
-import type { Quote } from '../types'
 
 const Wrapper = styled.div`
   display: flex
@@ -49,7 +50,7 @@ const getItemStyle = (draggableStyle, isDragging) => ({
 export default class Column extends Component<Props> {
   render() {
     const title: string = this.props.title
-    const quotes: Quote[] = this.props.quotes
+    const items: Item[] = this.props.items
     const index: number = this.props.index
     return (
       <Draggable draggableId={title} index={index} type="COLUMN">
@@ -74,7 +75,7 @@ export default class Column extends Component<Props> {
               <QuoteList
                 listId={title}
                 listType="QUOTE"
-                quotes={quotes}
+                items={items}
                 autoFocusQuoteId={this.props.autoFocusQuoteId}
               />
             </Container>

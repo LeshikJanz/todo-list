@@ -125,7 +125,7 @@ export default class Board extends Component<Props, State> {
                 key={key}
                 index={index}
                 title={key}
-                quotes={columns[key]}
+                items={columns[key]}
                 autoFocusQuoteId={this.state.autoFocusQuoteId}
               />
             ))}
